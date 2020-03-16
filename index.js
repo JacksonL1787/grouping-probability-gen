@@ -5,24 +5,22 @@ const math = 12
 const stats = 6
 const allGroups = [];
 
-// 18 students total
-// 12 Math
-// 6 stats
-// split into 2
-// one group got all Math
+const shuffle = (arr) => {
+  return arr.sort(() => Math.random() - 0.5);
+}
 
 const runSim = () => {
   let totalAllMath = 0;
   for(var i = 0; i < runSimLoop; i++) {
     const group1 = [];
     const group2 = [];
-    for(var a = 0; a < total; a++) {
-      const n = Math.ceil(Math.random() * 18)
-      let student = n <= 6 ? "stats" : "math"
-      if(a % 2) {
-        group1.push(student)
+    const students = ["math","math","math","math","math","math","math","math","math","math","math","math","stats","stats","stats","stats","stats","stats"];
+    const randStudents = shuffle(students)
+    for(var a = 0; a < randStudents.length; a++) {
+      if(a < 9) {
+        group1.push(randStudents[a])
       } else {
-        group2.push(student)
+        group2.push(randStudents[a])
       }
     }
     allGroups.push([group1, group2])
